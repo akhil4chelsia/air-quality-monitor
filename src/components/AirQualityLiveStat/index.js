@@ -23,8 +23,8 @@ export default function AirQualityLiveStat({ city }) {
     existing = existing ? JSON.parse(existing) : [];
     history = [...existing, ...formatedData];
     history =
-      history.length > 8
-        ? history.slice(history.length - 8, history.length - 1)
+      history.length > 21
+        ? history.slice(history.length - 21, history.length)
         : history;
   } else {
     history = [...formatedData];
@@ -32,10 +32,12 @@ export default function AirQualityLiveStat({ city }) {
 
   localStorage.setItem(city, JSON.stringify(history));
 
-  const data = history.map((each) => ({
-    name: format(each.Timestamp, "HH:MM:SS"),
-    time: each.aqi,
-  }));
+  const data = history
+    .sort((a, b) => a.Timestamp < b.Timestamp)
+    .map((each) => ({
+      name: format(each.Timestamp, "hh:MM:SS"),
+      time: each.aqi,
+    }));
 
   return (
     <ResponsiveContainer width="100%" height="100%">
@@ -48,11 +50,15 @@ export default function AirQualityLiveStat({ city }) {
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis dataKey="name" />
         <YAxis
-          label={{ value: `AQI - ${city}`, angle: -90, position: "insideLeft" }}
+          label={{
+            value: `AQI - ${city || "<Select City>"}`,
+            angle: -90,
+            position: "insideLeft",
+          }}
         />
         <Tooltip />
         <Legend />
-        <Line type="monotone" dataKey="time" stroke="#8884d8" />
+        <Line type="monotone" dataKey="time" stroke="#fb1c6d" strokeWidth={6} />
       </LineChart>
     </ResponsiveContainer>
   );
