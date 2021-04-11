@@ -1,5 +1,8 @@
 # Getting Started with Air Quality Monitor Dashboard
 
+## Hosted URL
+
+[http://me.akhil.aqm.s3-website.ap-south-1.amazonaws.com/](http://me.akhil.aqm.s3-website.ap-south-1.amazonaws.com/)
 
 ## Available Scripts
 
