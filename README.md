@@ -25,6 +25,4 @@ See the section about [running tests](https://facebook.github.io/create-react-ap
 
 ### Deployment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-
+Github action configured to deploy to s3
