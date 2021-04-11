@@ -1,0 +1,15 @@
+$headerHeight: 58px;
+
+.container {
+  background-color: #092543;
+  height: $headerHeight;
+  display: flex;
+  align-items: center;
+}
+
+.title {
+  padding-left: 1rem;
+  color: white;
+  font-size: 1.4rem;
+  font-family: Verdana, Arial, sans-serif;
+}
